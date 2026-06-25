@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Local env files
+.env
+.env*.local
+client/.env
+server/.env
+
+# Build outputs
+dist/
+client/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database data (if run locally)
+mongo-data/
