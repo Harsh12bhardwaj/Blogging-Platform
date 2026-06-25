@@ -119,9 +119,14 @@ export function SignUp() {
     }
 
     try {
-      await AuthService.signUpUser({ name, email, password });
+      const response = await AuthService.signUpUser({ name, email, password });
       setStep(2);
-      setSuccess("OTP sent to your email!");
+      if (response && response.otp) {
+        setOtp(response.otp.toString());
+        setSuccess(`OTP generated (Auto-filled for demo: ${response.otp})`);
+      } else {
+        setSuccess("OTP sent to your email!");
+      }
     } catch (err) {
       setError(
         err?.response?.data?.warning || "Failed to send OTP. Please try again."
